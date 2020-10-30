@@ -34,6 +34,8 @@ Now after that Login as a patient.
 3 -  Patient can see all apointments created by him.
 
 
+I am not putting output here because input and output you can easily check in published doc. link is below.
+
 
 
 Postman published doc link
