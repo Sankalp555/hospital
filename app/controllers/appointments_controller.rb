@@ -21,9 +21,7 @@ class AppointmentsController < ApplicationController
     slot = Slot.find_by_id(params['appointment']['slot_id'])
   	if slot.present?
       @appointment = current_user.appointments.new(appointment_params)
-    	if @appointment.save
-        render json: @appointment
-      else
+    	if !@appointment.save
         render json: {message: @appointment.errors.full_messages[0], status: 302}
       end
     else

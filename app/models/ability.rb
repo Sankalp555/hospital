@@ -13,7 +13,7 @@ class Ability
     end
     
     if user.patient?
-      can [:read, :edit, :update, :create], Appointment
+      can [:read, :edit, :update, :create, :get_all_slots], Appointment
     end
 
     if user.doctor?
