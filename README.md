@@ -31,7 +31,16 @@ Now after that Login as a patient.
 
 1 - Patient can see all available slots in the app.
 2 - He can book any preferred slot and create a appointment. After that, that slot will be booked and will not available for other patients for same date.
-3 -  Patient can see all apointments created by him. In This Api, you can also give doctor_id, To fetch all appointments for specific doctor. If you dont give doctor_id, then you will get all appointments of a particular current user
+3 -  Patient can see all apointments created by him. In This Api, you can also give doctor_id, To fetch all appointments for specific doctor. If you dont give doctor_id, then you will get all appointments of a particular current user. You can also send "filter_by" parameter for filtering data.
+
+parameters example :-
+
+doctor_id - 1
+filter_by - "Today" OR filter_by - "Week"  
+
+In this way you will filtered appointments.
+
+
 
 
 I am not putting output here because input and output you can easily check in published doc. link is below.

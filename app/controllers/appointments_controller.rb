@@ -20,6 +20,10 @@ class AppointmentsController < ApplicationController
     else
       @appointments = current_user.appointments.all
   	end
+        
+    @appointments = @appointments.where(appointment_date: Time.now) if params["filter_by"] == "Today"
+    @appointments = @appointments.where(appointment_date: Time.now..Time.now + 7.days) if params["filter_by"] == "Week"
+
     if @appointments.blank?
       render json: {message: "Not Found", status: 302}
     end
