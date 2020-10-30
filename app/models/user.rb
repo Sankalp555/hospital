@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   :recoverable, :rememberable, :trackable, :validatable
 
   has_many :slots
-  
+
   validates :first_name, :last_name, :phone_number, :user_type, :email, presence: true
 
   def generate_jwt
@@ -50,11 +50,6 @@ class User < ActiveRecord::Base
     save!
   end
   
-  def full_name
-    result = first_name || ""
-    result += " #{last_name}" if last_name.present?
-  end
-
   private
 
   def generate_token
