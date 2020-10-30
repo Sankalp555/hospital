@@ -21,11 +21,21 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def customer?
+  def admin?
+    type == 'Admin'
+  end
+  
+  def doctor?
     type == 'Doctor'
   end
-  def seller?
+
+  def patient?
     type == 'Patient'
+  end
+
+  def full_name
+    result = first_name || ""
+    result += " #{last_name}" if last_name.present?
   end
 
   def password_token_valid?

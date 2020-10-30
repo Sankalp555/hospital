@@ -1,11 +1,10 @@
 class AppointmentsController < ApplicationController
+  load_and_authorize_resource
   before_action :authenticate_user!
 
   def get_all_slots
     @slots = Slot.all.available
-    if @slots.present?
-      render json: @slots
-    else
+    if @slots.blank?
       render json: {message: "Not Found", status: 302}
     end
   end
@@ -13,9 +12,7 @@ class AppointmentsController < ApplicationController
 
   def index
     @appointments = current_user.appointments.all
-  	if @appointments.present?
-      render json: @appointments
-    else
+  	if @appointments.blank?
       render json: {message: "Not Found", status: 302}
     end
   end
