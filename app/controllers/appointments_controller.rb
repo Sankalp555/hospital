@@ -9,10 +9,18 @@ class AppointmentsController < ApplicationController
     end
   end
 
-
   def index
-    @appointments = current_user.appointments.all
-  	if @appointments.blank?
+    if params["doctor_id"].present?
+      doctor = Doctor.find_by_id(params["doctor_id"])
+      if doctor.present?
+        @appointments = current_user.appointments.where(slot_id: doctor.slots.pluck(:id))
+      else
+        render json: {message: "Not Found", status: 302}
+      end
+    else
+      @appointments = current_user.appointments.all
+  	end
+    if @appointments.blank?
       render json: {message: "Not Found", status: 302}
     end
   end
