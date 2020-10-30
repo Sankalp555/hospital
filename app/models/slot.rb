@@ -5,4 +5,6 @@ class Slot < ApplicationRecord
   validates :start_time, uniqueness: { scope: :date, message: "Already assigned!" }
   scope :available, -> { where(availability: true) }
 
+   validates :start_time, :end_time, presence: true
+
 end

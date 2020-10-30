@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable, :confirmable,
   :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :slots
+  
   validates :first_name, :last_name, :phone_number, :user_type, :email, presence: true
 
   def generate_jwt
